@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regalo de San Valentín Virtual</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7c8d9; /* Rosa palo */
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animación para los corazones del fondo */
+    @keyframes floatingHearts {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .background-heart {
+      position: fixed;
+      color: #8B0000;
+      font-size: 24px;
+      user-select: none;
+      z-index: 1;
+      animation: floatingHearts 15s linear infinite;
+    }
+
+    .welcome-message {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: #8B0000;
+      text-align: center;
+      z-index: 5;
+      font-family: Arial, sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: #8B0000; /* Rojo vino */
+      transform: rotate(-45deg);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .heart:hover {
+      transform: rotate(-45deg) scale(1.2); /* Aumenta el tamaño al pasar el ratón */
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: #8B0000; /* Rojo vino */
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    .number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      font-size: 40px; /* Tamaño más grande para los números */
+      font-weight: bold;
+      color: black; /* Números en negro */
+      text-align: center;
+      z-index: 10;
+      transition: font-size 0.3s ease-in-out; /* Animación del número */
+    }
+
+    .heart:hover .number {
+      font-size: 50px; /* Aumenta el tamaño del número al pasar el ratón */
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #8B0000; /* Texto "Elige uno" en rojo vino */
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Script para generar corazones flotantes -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'background-heart';
+      heart.innerHTML = '♡';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 5 + 10 + 's'; // Entre 10 y 15 segundos
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px'; // Entre 20 y 40px
+      document.body.appendChild(heart);
+
+      // Eliminar el corazón después de que termine la animación
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+
+    // Crear corazones cada segundo
+    setInterval(createHeart, 1000);
+    // Crear algunos corazones iniciales
+    for(let i = 0; i < 10; i++) {
+      setTimeout(createHeart, i * 100);
+    }
+  </script>
+
+  <!-- Mensaje de bienvenida -->
+  <div class="welcome-message">
+    Bienvenido, Isai ♡ tienes dos opciones de sorpresas.
+  </div>
+
+  <!-- Contenedor de corazones -->
+  <div class="container">
+    <!-- Corazón 1 -->
+    <a href="pagina2.html" target="_blank">
+      <div class="heart">
+        <div class="number">1</div>
+      </div>
+    </a>
+
+    <!-- Texto en el medio -->
+    <div class="text">Elige uno</div>
+
+    <!-- Corazón 2 -->
+    <a href="pagina3.html" target="_blank">
+      <div class="heart">
+        <div class="number">2</div>
+      </div>
+    </a>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

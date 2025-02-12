@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas de San Valentín</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f7c8d9;
+      padding: 20px;
+      position: relative;
+    }
+    /* Contenedor para los detalles de fondo */
+    #bgDetails {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    /* Contenedor principal con efecto glassmorphism */
+    .container {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      position: relative;
+      z-index: 100; /* Por encima de los decorativos */
+    }
+    h2 {
+      position: relative;
+      z-index: 100;
+      color: #8B0000;
+    }
+    .question {
+      margin: 15px 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #8B0000;
+    }
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .option-box {
+      background-color: #ffb6c1;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #8B0000;
+      cursor: pointer;
+      border: 2px solid #8B0000;
+    }
+    .option-box:hover {
+      background-color: #ff80a0;
+    }
+    .btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #8B0000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #600000;
+    }
+    /* Corazones flotantes básicos (decorativos) */
+    .heart {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: #8B0000;
+      transform: rotate(-45deg);
+      opacity: 0.7;
+      animation: float 5s infinite ease-in-out;
+      z-index: 0;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: inherit;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -12px;
+      left: 0;
+    }
+    .heart::after {
+      left: 12px;
+      top: 0;
+    }
+    /* Corazones con letras M e I */
+    .letter-heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 80%, 18% 100%, 0% 35%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      animation: float 5s infinite ease-in-out;
+      z-index: 0;
+      pointer-events: none;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(-45deg); }
+      50% { transform: translateY(-20px) rotate(-45deg); }
+      100% { transform: translateY(0) rotate(-45deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenedor para los detalles decorativos en el fondo -->
+  <div id="bgDetails"></div>
+  
+  <h2>♡ Responde las preguntas con la respuesta correcta para revelar tu sorpresa ♡</h2>
+  <div class="container">
+    <form id="quizForm">
+      <!-- Pregunta 1 -->
+      <div class="question">1. ¿El primer día que nos conocimos, nos besamos?</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q1" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q1" value="false"> 💔 Falso</label>
+      </div>
+      
+      <!-- Pregunta 2 -->
+      <div class="question">2. ¿La primera manilla que te regale de qué color fue?</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q2" value="a"> a. Negra</label>
+        <label class="option-box"><input type="radio" name="q2" value="b"> b. Roja</label>
+        <label class="option-box"><input type="radio" name="q2" value="c"> c. Blanca</label>
+      </div>
+      
+      <!-- Pregunta 3 -->
+      <div class="question">3. ¿Nuestro primer beso fue en tu casa?</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q3" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q3" value="false"> 💔 Falso</label>
+      </div>
+      
+      <!-- Pregunta 4 -->
+      <div class="question">4. ¿Cuál fue el día que lo hicimos por primera vez?</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q4" value="a"> a. Jueves</label>
+        <label class="option-box"><input type="radio" name="q4" value="b"> b. Viernes</label>
+        <label class="option-box"><input type="radio" name="q4" value="c"> c. Sábado</label>
+      </div>
+      
+      <!-- Pregunta 5 -->
+      <div class="question">5. San Valentín se celebra únicamente en Estados Unidos.</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q5" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q5" value="false"> 💔 Falso</label>
+      </div>
+      
+      <!-- Pregunta 6 -->
+      <div class="question">6. El intercambio de tarjetas y regalos es una tradición antigua de San Valentín.</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q6" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q6" value="false"> 💔 Falso</label>
+      </div>
+      
+      <!-- Pregunta 7 -->
+      <div class="question">7. No solo las parejas enamoradas celebran San Valentín.</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q7" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q7" value="false"> 💔 Falso</label>
+      </div>
+      
+      <!-- Pregunta 8 -->
+      <div class="question">8. El color rojo es el más representativo en San Valentín, no el azul.</div>
+      <div class="options">
+        <label class="option-box"><input type="radio" name="q8" value="true"> ❤️ Verdadero</label>
+        <label class="option-box"><input type="radio" name="q8" value="false"> 💔 Falso</label>
+      </div>
+      
+      <div class="btn-container">
+        <button type="button" class="btn" onclick="checkAnswers()">Enviar respuesta</button>
+        <button type="button" class="btn" onclick="location.href='index.html'">Volver al inicio</button>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    // Función para crear corazones básicos en el fondo, evitando la parte superior (desde 30vh en adelante)
+    function createHearts(num) {
+      const bg = document.getElementById("bgDetails");
+      for (let i = 0; i < num; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.top = (Math.random() * 170 + 30) + 'vh';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.backgroundColor = (i % 2 === 0) ? '#ff6699' : '#8B0000';
+        bg.appendChild(heart);
+      }
+    }
+    createHearts(100);
+    
+    // Función para crear corazones con letras M e I en el fondo, evitando la parte superior (desde 30vh en adelante)
+    function createLetterHearts(num) {
+      const bg = document.getElementById("bgDetails");
+      for (let i = 0; i < num; i++) {
+        let letterHeart = document.createElement('div');
+        letterHeart.className = 'letter-heart';
+        letterHeart.textContent = Math.random() < 0.5 ? 'M' : 'I';
+        letterHeart.style.top = (Math.random() * 170 + 30) + 'vh';
+        letterHeart.style.left = Math.random() * 100 + 'vw';
+        letterHeart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        let colors = ['#f7c8d9', '#8B0000'];
+        let chosenColor = colors[Math.floor(Math.random() * colors.length)];
+        letterHeart.style.backgroundColor = chosenColor;
+        letterHeart.style.color = (chosenColor === '#f7c8d9') ? '#8B0000' : '#ffffff';
+        bg.appendChild(letterHeart);
+      }
+    }
+    createLetterHearts(150);
+    
+    // Función para crear algunos corazones en la parte superior (entre 0 y 30vh)
+    function createTopHearts(num) {
+      const bg = document.getElementById("bgDetails");
+      for (let i = 0; i < num; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.top = (Math.random() * 30) + 'vh';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.backgroundColor = (i % 2 === 0) ? '#ff6699' : '#8B0000';
+        bg.appendChild(heart);
+      }
+    }
+    createTopHearts(15);
+    
+    function checkAnswers() {
+      let correctAnswers = {
+        q1: "false",  // Respuesta correcta: Falso
+        q2: "c",      // Respuesta correcta: c (Blanca)
+        q3: "false",  // Respuesta correcta: Falso
+        q4: "c",      // Respuesta correcta: c (Sábado)
+        q5: "false",  // Respuesta correcta: Falso
+        q6: "true",   // Respuesta correcta: Verdadero
+        q7: "true",   // Respuesta correcta: Verdadero
+        q8: "true"    // Respuesta correcta: Verdadero
+      };
+      
+      let form = document.getElementById("quizForm");
+      let score = 0;
+      
+      for (let key in correctAnswers) {
+        let selected = form.elements[key].value;
+        if (selected === correctAnswers[key]) {
+          score++;
+        }
+      }
+      
+      if (score === 8) {
+        alert("¡Felicidades! Has respondido todo correctamente. Ahora verás tu sorpresa.");
+      } else {
+        alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
