@@ -15,6 +15,7 @@
       background-color: #f7c8d9; /* Rosa palo */
       overflow: hidden;
       position: relative;
+      flex-direction: column;
     }
 
     /* Animación para los corazones del fondo */
@@ -39,32 +40,31 @@
     }
 
     .welcome-message {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 28px;
+      font-size: 5vw;
       font-weight: bold;
       color: #8B0000;
       text-align: center;
       z-index: 5;
       font-family: Arial, sans-serif;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 10px;
     }
 
     .container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10vw;
+      width: 100%;
     }
 
     .heart {
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 15vw;
+      height: 15vw;
+      max-width: 100px;
+      max-height: 100px;
       background-color: #8B0000; /* Rojo vino */
       transform: rotate(-45deg);
       cursor: pointer;
@@ -79,19 +79,21 @@
     .heart::after {
       content: '';
       position: absolute;
-      width: 100px;
-      height: 100px;
+      width: 15vw;
+      height: 15vw;
+      max-width: 100px;
+      max-height: 100px;
       background-color: #8B0000; /* Rojo vino */
       border-radius: 50%;
     }
 
     .heart::before {
-      top: -50px;
+      top: -50%;
       left: 0;
     }
 
     .heart::after {
-      left: 50px;
+      left: 50%;
       top: 0;
     }
 
@@ -100,16 +102,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(45deg);
-      font-size: 40px; /* Tamaño más grande para los números */
+      font-size: 6vw;
       font-weight: bold;
       color: black; /* Números en negro */
       text-align: center;
       z-index: 10;
-      transition: font-size 0.3s ease-in-out; /* Animación del número */
-    }
-
-    .heart:hover .number {
-      font-size: 50px; /* Aumenta el tamaño del número al pasar el ratón */
     }
 
     a {
@@ -117,18 +114,21 @@
     }
 
     .text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
+      font-size: 4vw;
       font-weight: bold;
       color: #8B0000; /* Texto "Elige uno" en rojo vino */
       z-index: 5;
+      text-align: center;
+      margin: 5vw 0;
     }
   </style>
 </head>
 <body>
+  <audio autoplay loop>
+    <source src="relaxing-music.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
   <!-- Script para generar corazones flotantes -->
   <script>
     function createHeart() {
@@ -137,7 +137,7 @@
       heart.innerHTML = '♡';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDuration = Math.random() * 5 + 10 + 's'; // Entre 10 y 15 segundos
-      heart.style.fontSize = Math.random() * 20 + 20 + 'px'; // Entre 20 y 40px
+      heart.style.fontSize = Math.random() * 3 + 2 + 'vw'; // Entre 2vw y 5vw
       document.body.appendChild(heart);
 
       // Eliminar el corazón después de que termine la animación
@@ -180,6 +180,7 @@
   </div>
 </body>
 </html>
+
 
 
 

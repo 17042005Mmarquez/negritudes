@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa de San Valentín 💖</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #f4c2c2, #8B0000); /* Degradado palo de rosa a rojo vino intenso */
+            font-family: Menlo, Consolas, monospace;
+            position: relative;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .mensaje {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            line-height: 1.5;
+            white-space: normal;
+        }
+
+        .boton-continuar {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #8B0000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .corazones-fondo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .corazon-fondo {
+            position: absolute;
+            font-size: calc(20px + 50 * Math.random())px; /* Tamaños diferentes */
+            color: rgba(139, 0, 0, 0.3); /* Rojo vino transparente */
+            animation: subir 10s linear infinite;
+        }
+
+        .corazon-fondo:nth-child(odd) {
+            color: rgba(244, 194, 194, 0.6); /* Palo de rosa transparente */
+        }
+
+        @keyframes subir {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje" id="mensaje"></div>
+    <button class="boton-continuar" id="botonContinuar" onclick="window.location.href='pagina4.html'">Continuar</button>
+    <div class="corazones-fondo"></div>
+    
+    <script>
+        const texto = "Hola Isai, feliz día de San Valentín. Quiero que sepas que te amo hoy, mañana, siempre y toda la vida que yo viva. Eres lo más hermoso y preciado que tengo. Te amo infinitamente, mi corazón. Pronto nos vemos, mi amor y amistad ¡Feliz día! ♡";
+        let index = 0;
+        function escribirTexto() {
+            if (index < texto.length) {
+                document.getElementById("mensaje").innerHTML += texto.charAt(index);
+                index++;
+                setTimeout(escribirTexto, 100);
+            } else {
+                document.getElementById("botonContinuar").style.display = "block";
+            }
+        }
+        escribirTexto();
+
+        function crearCorazon() {
+            let heart = document.createElement("span");
+            heart.innerHTML = "♡";
+            heart.classList.add("corazon-fondo");
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.fontSize = (Math.random() * 40 + 20) + "px";
+            heart.style.color = Math.random() > 0.5 ? "rgba(139, 0, 0, 0.3)" : "rgba(244, 194, 194, 0.6)";
+            heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+            document.querySelector(".corazones-fondo").appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        setInterval(crearCorazon, 300);
+    </script>
+</body>
+</html>

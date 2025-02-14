@@ -19,7 +19,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: -1; /* Se asegura de estar detrás de todo */
       pointer-events: none;
     }
     /* Contenedor principal con efecto glassmorphism */
@@ -92,7 +92,7 @@
       transform: rotate(-45deg);
       opacity: 0.7;
       animation: float 5s infinite ease-in-out;
-      z-index: 0;
+      z-index: -1;
     }
     .heart::before,
     .heart::after {
@@ -123,7 +123,7 @@
       font-size: 16px;
       font-weight: bold;
       animation: float 5s infinite ease-in-out;
-      z-index: 0;
+      z-index: -1;
       pointer-events: none;
     }
     @keyframes float {
@@ -141,14 +141,14 @@
   <div class="container">
     <form id="quizForm">
       <!-- Pregunta 1 -->
-      <div class="question">1. ¿El primer día que nos conocimos, nos besamos?</div>
+      <div class="question">1. ¿El primer día que nos conocimos, nos dimos un beso?</div>
       <div class="options">
         <label class="option-box"><input type="radio" name="q1" value="true"> ❤️ Verdadero</label>
         <label class="option-box"><input type="radio" name="q1" value="false"> 💔 Falso</label>
       </div>
       
       <!-- Pregunta 2 -->
-      <div class="question">2. ¿La primera manilla que te regale de qué color fue?</div>
+      <div class="question">2. ¿De que color fue la primer manilla que te obsequie?</div>
       <div class="options">
         <label class="option-box"><input type="radio" name="q2" value="a"> a. Negra</label>
         <label class="option-box"><input type="radio" name="q2" value="b"> b. Roja</label>
@@ -156,43 +156,48 @@
       </div>
       
       <!-- Pregunta 3 -->
-      <div class="question">3. ¿Nuestro primer beso fue en tu casa?</div>
+      <div class="question">3. ¿Cual es nuestro lugar favorito para ir a comer?</div>
       <div class="options">
-        <label class="option-box"><input type="radio" name="q3" value="true"> ❤️ Verdadero</label>
-        <label class="option-box"><input type="radio" name="q3" value="false"> 💔 Falso</label>
+        <label class="option-box"><input type="radio" name="q3" value="a"> a. Betos</label>
+        <label class="option-box"><input type="radio" name="q3" value="b"> b. Hamburguesa de 6k</label>
+        <label class="option-box"><input type="radio" name="q2" value="c"> c. Pollo de 11k</label>
       </div>
       
       <!-- Pregunta 4 -->
-      <div class="question">4. ¿Cuál fue el día que lo hicimos por primera vez?</div>
+      <div class="question">4. ¿Que actividad disfrutamos hacer juntos?</div>
       <div class="options">
-        <label class="option-box"><input type="radio" name="q4" value="a"> a. Jueves</label>
-        <label class="option-box"><input type="radio" name="q4" value="b"> b. Viernes</label>
-        <label class="option-box"><input type="radio" name="q4" value="c"> c. Sábado</label>
+        <label class="option-box"><input type="radio" name="q4" value="a"> a. Caminar</label>
+        <label class="option-box"><input type="radio" name="q4" value="b"> b. Bailar</label>
+        <label class="option-box"><input type="radio" name="q4" value="c"> c. Jugar</label>
       </div>
       
       <!-- Pregunta 5 -->
-      <div class="question">5. San Valentín se celebra únicamente en Estados Unidos.</div>
+      <div class="question">5. ¿Cual es el pais que anhelamos visitar juntos?</div>
       <div class="options">
-        <label class="option-box"><input type="radio" name="q5" value="true"> ❤️ Verdadero</label>
-        <label class="option-box"><input type="radio" name="q5" value="false"> 💔 Falso</label>
+        <label class="option-box"><input type="radio" name="q5" value="a"> a. Japon</label>
+        <label class="option-box"><input type="radio" name="q5" value="b"> b. Tailandia</label>
+        <label class="option-box"><input type="radio" name="q4" value="c"> c. China</label>
       </div>
       
       <!-- Pregunta 6 -->
-      <div class="question">6. El intercambio de tarjetas y regalos es una tradición antigua de San Valentín.</div>
+      <div class="question">6. ¿Cual es el mejor regalo que te he dado? </div>
       <div class="options">
-        <label class="option-box"><input type="radio" name="q6" value="true"> ❤️ Verdadero</label>
-        <label class="option-box"><input type="radio" name="q6" value="false"> 💔 Falso</label>
+        <label class="option-box"><input type="radio" name="q6" value="a"> a. Reloj</label>
+        <label class="option-box"><input type="radio" name="q6" value="b"> b. Ser mi novio</label>
+        <label class="option-box"><input type="radio" name="q4" value="c"> c. Bolso</label>
       </div>
       
       <!-- Pregunta 7 -->
-      <div class="question">7. No solo las parejas enamoradas celebran San Valentín.</div>
+      <div class="question">7. ¿Cual fue la primer comida de la calle que comimos juntos?</div>
       <div class="options">
-        <label class="option-box"><input type="radio" name="q7" value="true"> ❤️ Verdadero</label>
-        <label class="option-box"><input type="radio" name="q7" value="false"> 💔 Falso</label>
+        <label class="option-box"><input type="radio" name="q7" value="a"> a. Pollo</label>
+        <label class="option-box"><input type="radio" name="q7" value="b"> b. pizza</label>
+        <label class="option-box"><input type="radio" name="q4" value="c"> c. Hamburguesa</label>
+
       </div>
       
       <!-- Pregunta 8 -->
-      <div class="question">8. El color rojo es el más representativo en San Valentín, no el azul.</div>
+      <div class="question">8. ¿Nuestro primer beso fue en mi casa?</div>
       <div class="options">
         <label class="option-box"><input type="radio" name="q8" value="true"> ❤️ Verdadero</label>
         <label class="option-box"><input type="radio" name="q8" value="false"> 💔 Falso</label>
@@ -259,12 +264,12 @@
       let correctAnswers = {
         q1: "false",  // Respuesta correcta: Falso
         q2: "c",      // Respuesta correcta: c (Blanca)
-        q3: "false",  // Respuesta correcta: Falso
+        q3: "b",  // Respuesta correcta: Falso
         q4: "c",      // Respuesta correcta: c (Sábado)
-        q5: "false",  // Respuesta correcta: Falso
-        q6: "true",   // Respuesta correcta: Verdadero
-        q7: "true",   // Respuesta correcta: Verdadero
-        q8: "true"    // Respuesta correcta: Verdadero
+        q5: "a",  // Respuesta correcta: Falso
+        q6: "a",   // Respuesta correcta: Verdadero
+        q7: "b",   // Respuesta correcta: Verdadero
+        q8: "false"    // Respuesta correcta: Verdadero
       };
       
       let form = document.getElementById("quizForm");
@@ -278,21 +283,76 @@
       }
       
       if (score === 8) {
-        alert("¡Felicidades! Has respondido todo correctamente. Ahora verás tu sorpresa.");
-      } else {
-        alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
-      }
-    }
+    showCelebration();
+  } else {
+    alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
+  }
+}
+  
+function showCelebration() {
+    // Crear fondo semitransparente (overlay) para que el mensaje resalte sin borrar el fondo
+    let overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.background = "rgba(0, 0, 0, 0.4)"; /* Oscurece ligeramente el fondo */
+    overlay.style.zIndex = "150"; /* Asegura que esté por encima de la decoración */
+    
+    // Crear contenedor del mensaje
+    let message = document.createElement("div");
+    message.innerHTML = "🎉 ¡Felicidades, mi amor! 🎉<br>Has acertado todas las preguntas. 💖<br><br>";
+    message.style.position = "fixed";
+    message.style.top = "50%";
+    message.style.left = "50%";
+    message.style.transform = "translate(-50%, -50%)";
+    message.style.background = "rgba(255, 255, 255, 0.9)";
+    message.style.padding = "20px";
+    message.style.borderRadius = "15px";
+    message.style.fontSize = "24px";
+    message.style.fontWeight = "bold";
+    message.style.color = "#8B0000";
+    message.style.textAlign = "center";
+    message.style.zIndex = "200"; /* Encima del overlay */
+
+    // Crear botón de "Continuar"
+    let continueButton = document.createElement("button");
+    continueButton.innerHTML = "Continuar";
+    continueButton.style.display = "block";
+    continueButton.style.margin = "20px auto";
+    continueButton.style.padding = "15px 30px";
+    continueButton.style.fontSize = "22px";
+    continueButton.style.color = "white";
+    continueButton.style.backgroundColor = "#8B0000";
+    continueButton.style.border = "none";
+    continueButton.style.borderRadius = "10px";
+    continueButton.style.cursor = "pointer";
+    continueButton.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.3)";
+    continueButton.style.transition = "background 0.3s ease";
+
+    // Cambiar color al pasar el mouse
+    continueButton.onmouseover = function () {
+      continueButton.style.backgroundColor = "#600000";
+    };
+    continueButton.onmouseout = function () {
+      continueButton.style.backgroundColor = "#8B0000";
+    };
+
+    // Acción al hacer clic en el botón (redirige a otra página)
+    continueButton.onclick = function () {
+      window.location.href = "pagina5.html"; // Cambia esto por la URL correcta
+    };
+
+    // Agregar botón al mensaje
+    message.appendChild(continueButton);
+
+    // Agregar todo al body sin eliminar el fondo decorativo
+    document.body.appendChild(overlay);
+    document.body.appendChild(message);
+  }
+</script>
   </script>
+  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

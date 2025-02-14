@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Sorpresa</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #4B0E0E;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Courier Prime', monospace;
+        }
+        .heart {
+            position: absolute;
+            font-size: 40px;
+            color: #f4a7b9;
+            opacity: 0.6;
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-30px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .ticket {
+            background: white;
+            width: 380px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border: 3px solid #e74c3c;
+            position: relative;
+            background: repeating-linear-gradient(45deg, #fff, #fff 10px, #f9f9f9 10px, #f9f9f9 20px);
+        }
+        .ticket::before, .ticket::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #e74c3c;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .ticket::before {
+            left: -10px;
+        }
+        .ticket::after {
+            right: -10px;
+        }
+        .ticket h2 {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .ticket p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .serial-number {
+            font-size: 14px;
+            color: #555;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+        .dashed-line {
+            width: 100%;
+            border-top: 2px dashed #e74c3c;
+            margin: 15px 0;
+        }
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .qr-container img {
+            width: 100px;
+            height: 100px;
+        }
+        .download-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container"></div>
+    <div class="ticket" id="ticket">
+        <h2>🎟 Ticket Sorpresa 🎟</h2>
+        <p>Válido por una comida deliciosa contigo ❤️</p>
+        <div class="dashed-line"></div>
+        <p><small>Presenta este ticket para reclamar tu sorpresa</small></p>
+        <div class="qr-container">
+            <img id="qr-code" src="Ticket.png" alt="Código QR">
+        </div>
+        <div class="serial-number">No. 00<span id="ticket-number"></span></div>
+        <button class="download-btn" onclick="downloadQR()">Descargar QR</button>
+    </div>
+
+    <script>
+        function downloadQR() {
+            let qr = document.getElementById("qr-code");
+            let link = document.createElement("a");
+            link.href = qr.src;
+            link.download = "codigo_qr.png";
+            link.click();
+        }
+        function createHearts() {
+            const container = document.querySelector(".hearts-container");
+            for (let i = 0; i < 60; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = Math.random() * 100 + "vh";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                heart.style.opacity = Math.random() * 0.6 + 0.4;
+                heart.style.fontSize = Math.random() * 20 + 30 + "px";
+                container.appendChild(heart);
+            }
+        }
+        function generateSerialNumber() {
+            document.getElementById("ticket-number").innerText = Math.floor(1000 + Math.random() * 9000);
+        }
+        createHearts();
+        generateSerialNumber();
+    </script>
+</body>
+</html>
